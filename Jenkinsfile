@@ -1,12 +1,17 @@
 pipeline {
     agent any
+
+    environment {
+        JAVA_HOME = 'C:\\Program Files\\Java\\jdk-17'
+        PATH = "${JAVA_HOME}\\bin;${env.PATH}"
+    }
+
     stages {
         stage('Build') {
             steps {
                 script {
-                    // Choisissez la commande en fonction de votre script
-                    bat 'pip install pandas' // Installer les dépendances
-                  bat'python data_analysis.py' // Exécuter le script Python
+                    bat 'pip install pandas'            // Installer pandas
+                    bat 'python data_analysis.py'       // Exécuter le script Python
                 }
             }
         }
